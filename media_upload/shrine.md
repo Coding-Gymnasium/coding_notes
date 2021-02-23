@@ -6,11 +6,11 @@ Tutorial: [article](https://www.microverse.org/blog/rails-image-upload-using-shr
 
 ## Tutorial Set up
 
-### step 1
+### step 1.1
 
 `$ rails new photo-app -T`
 
-### step 2
+### step 1.2
 
 /Gemfile
 
@@ -22,7 +22,7 @@ gem 'shrine', '~> 3.3'
 ```
 `$ bundle install`
 
-### step 3
+### step 1.3
 
 Create new initializer file 'shrine.rb'
 
@@ -50,14 +50,14 @@ config/initializers/shrine.rb
 	Shrine.plugin :validation
 ```
 
-### step 4
+### step 1.4
 
 Run article scaffold
 `$ rails g scaffold Article title body:text image_data:text`
 
 `$ rails db:create && rails db:migrate`
 
-### step 5
+### step 1.5
 
 Create directory app/uploaders and file image_uploader.rb
 `$ touch app/uploaders/image_uploader.rb`
@@ -72,7 +72,7 @@ app/uploaders/image_uploader
 end
 ```
 
-### step 6
+### step 1.6
 
 Associate the model with the shrine image attribute
 
@@ -85,7 +85,7 @@ app/models/article.rb
 	end
 ```
 
-### step 7
+### step 1.7
 
 1. Update controller 'article_params' attribute 'image_data' to 'image'
 ```ruby
@@ -119,6 +119,31 @@ app/models/article.rb
 
 ***************** End of Tutorial **
 
+At this point I am able to add a picture to an article and it caches if there is an error in the form an the form re renders.
+Next steps are:
 
+- Push files to S3 bucket
+- Uploading video and push it to a different bucket than the images.
 
+### Step 2.1
 
+#### Set up storage to S3 bucket
+
+1. In Gemfile/ install
+	 `gem "aws-sdk-s3", "~> 1.14"`
+
+2. Set up initializer 
+	`config/initializers/shrine.rb`
+
+	```ruby
+		require 'shrine/storage/s3'
+		
+		s3 = Shrine::Storage::S3.new(
+		  bucket: "iklf-user-avatars", # required
+		  region: "us-east-1", # required
+		  access_key_id: ENV["S3_ACCESS_KEY"],
+		  secret_access_key: ENV["S3_SECRET_ACCESS_KEY]",
+		)
+	```
+
+3. 
