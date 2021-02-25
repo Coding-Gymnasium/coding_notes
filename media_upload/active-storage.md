@@ -51,6 +51,7 @@ Setting up S3:
 - Create bucket in S3 "active-storage-test-app"
 - Create Policy to associate with bucket. In this policy permissions are set (listBucket, GetObject, DeleteObject, PutObject)
 - Create IAM user just for this app and associate with app policy
+- Add `gem 'aws-sdk-s3', '~> 1.88', '>= 1.88.1'` to Gemfile and run `$ bundle install`
 - run `$EDITOR="vim" bin/rails credentials:edit` and store credentials
 - Add S3 configuration to `config/storage.yml`
 
@@ -72,5 +73,9 @@ Setting up S3:
 	```
 - Change production environment active storage configuration to amazon
 	`config.active_storage.service = :amazon`
-
-
+- Add secret_key_base reference in `config/environments/production.rb`
+	```ruby
+		# Secret Key Base
+		config.secret_key_base = ENV['SECRET_KEY_BASE']
+	```
+- Run `$RAILS_ENV=production rails s`
