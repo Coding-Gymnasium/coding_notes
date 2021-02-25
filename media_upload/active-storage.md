@@ -46,5 +46,31 @@
 
 Setting up S3:
 [Link to the documentation](https://edgeguides.rubyonrails.org/active_storage_overview.html#s3-service-amazon-s3-and-s3-compatible-apis)
+[Tutorial](https://www.youtube.com/watch?v=PDrsBPZWHLA)
+
+- Create bucket in S3 "active-storage-test-app"
+- Create Policy to associate with bucket. In this policy permissions are set (listBucket, GetObject, DeleteObject, PutObject)
+- Create IAM user just for this app and associate with app policy
+- run `$EDITOR="vim" bin/rails credentials:edit` and store credentials
+- Add S3 configuration to `config/storage.yml`
+
+	```ruby
+		test:
+			service: Disk
+			root: <%= Rails.root.join("tmp/storage") %>
+		 
+		local:
+			service: Disk
+			root: <%= Rails.root.join("storage") %>
+		
+		amazon:
+			service: S3
+			access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+			secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+			region: us-east-1
+			bucket: active-storage-test-app
+	```
+- Change production environment active storage configuration to amazon
+	`config.active_storage.service = :amazon`
 
 
