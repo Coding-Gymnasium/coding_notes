@@ -79,3 +79,13 @@ Setting up S3:
 		config.secret_key_base = ENV['SECRET_KEY_BASE']
 	```
 - Run `$RAILS_ENV=production rails s`
+- Correct storage.yml to the following code to make it work:
+``` ruby
+	amazon:
+	  service: S3
+	  access_key_id: <%= ENV['S3_ACCESS_KEY'] %>
+	  secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
+	  region: us-east-1
+	  bucket: active-storage-test-app
+```	
+- Comment: I was getting a lint problem in the vim environment but when I save the syntax above in VScode it worked. So this may have been something Vim was introducing.
