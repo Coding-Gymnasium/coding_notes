@@ -80,3 +80,9 @@ www.kettlebellcompetitions.com a website to create and manage competitions and f
 ### Stage 1
 
 - There is a form for to enter a lifter's competition data (no login or state yet)
+
+  1. Create view pages/home.html.erb
+  2. Create pages controller with action 'home'. pages_controller.rb
+  3. Set root to: 'pages#home' 
+  4. Temporarily add <%= javascript_pack_tag 'hello_react' %> for initial visualization.
+  5. Run rails s
