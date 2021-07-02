@@ -41,4 +41,12 @@ or
 `nest g s`
  - It will prompt you to enter a name for the service
 
+Generate a module
+`nest g module <module name>`
+
+  Modules contain four things:
+    - Controllers: Optional listing of controllers defined in the module which have to be instantiated.
+    - Exports: Optional list of the subset of providers that are provided by the module and should be available in other module which import the module
+    - Imports: Optional list of imported modules that export the providers which are required in the module
+    - Providers: Optional list of providers that will be instantiated by the Nest injector and that may be shared at least across the module.
 
