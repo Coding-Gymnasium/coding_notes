@@ -34,4 +34,11 @@ it will prompt you to add a name for the controller.
 Short hand for generating a controller
 `nest g co`
 
+Generate a Service with Nest CLI
+
+`nest generate service`
+or
+`nest g s`
+ - It will prompt you to enter a name for the service
+
 
