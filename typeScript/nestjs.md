@@ -24,6 +24,9 @@ http://localhost:3000
 Running NestJS in Development Mode
 `npm run start:dev`
 
+To run after cloning from github make sure to run first
+`npm install`
+
 Generate a Controller
 `nest generate controller`
 it will prompt you to add a name for the controller.
