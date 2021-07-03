@@ -31,7 +31,7 @@ To run after cloning from github make sure to run first
 `nest generate controller`
 it will prompt you to add a name for the controller.
 
-Short hand for generating a controller
+### Short hand for generating a controller
 `nest g co`
 
 ## Generate a Service with Nest CLI
@@ -56,7 +56,7 @@ D.T.O = Data Transfer Object
 
 `nest g class coffees/dto/create-coffee.dto --no-spec`
 
-Using route parameters example
+## Using route parameters example
 
 ``` ts
 /* CoffeesController FINAL CODE */
@@ -81,7 +81,7 @@ export class CoffeesController {
 }
 ```
 
-Handling Request Body/Payload
+## Handling Request Body/Payload
 
 ``` typescript
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
@@ -105,4 +105,9 @@ export class CoffeesController {
   }
 }
 ```
+## Install Dependencies
+`npm i class-validator class-transformer`
+
+## Install @nestjs/mapped-types
+`npm i @nestjs/mapped-types`
 
