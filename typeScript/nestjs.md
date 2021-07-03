@@ -56,4 +56,53 @@ D.T.O = Data Transfer Object
 
 `nest g class coffees/dto/create-coffee.dto --no-spec`
 
+Using route parameters example
+
+``` ts
+/* CoffeesController FINAL CODE */
+import { Controller, Get, Param } from '@nestjs/common';
+
+@Controller('coffees')
+export class CoffeesController {
+  @Get()
+  findAll() {
+    return 'This action returns all coffees';
+  }
+
+  @Get(':id')
+  
+  // findOne(@Param() params) {
+  //  return 'this action returns #${params.id} coffee';
+  //  }
+
+  findOne(@Param('id') id: string) {
+    return `This action returns #${id} coffee`;
+  }
+}
+```
+
+Handling Request Body/Payload
+
+``` typescript
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+
+@Controller('coffees')
+export class CoffeesController {
+  @Get()
+  findAll() {
+    return 'This action returns all coffees';
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return `This action returns #${id} coffee`;
+  }
+
+  @Post()
+  create(@Body() body) {
+    return body;
+    // return `This action creates a coffee`;
+  }
+}
+```
 
