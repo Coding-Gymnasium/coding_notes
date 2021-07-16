@@ -111,3 +111,40 @@ export class CoffeesController {
 ## Install @nestjs/mapped-types
 `npm i @nestjs/mapped-types`
 
+
+---------
+
+## Docker-compose
+
+inside the project's root directory
+`$ touch docker-compose.yml`
+
+Add
+``` yml
+
+version: "3"
+services:
+  db:
+    image:  postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+       POSTGRES_PASSWORD: pass123
+```
+
+  * Start containers in detached / background mode
+    `$ docker-compose up -d`
+
+  * Stop containers
+    `$ docker-compose down`
+
+## TypeORM
+
+install dependencies
+
+`$ npm install @nestjs/typeorm typeorm pg`
+
+
+
+
