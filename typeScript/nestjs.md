@@ -175,3 +175,8 @@ import { CoffeesModule } from './coffees/coffees.module';
 })
 export class AppModule {}
 ```
+
+## Create an Entity
+
+`nest g class coffees/entities/flavor.entity --no-spec`
+
