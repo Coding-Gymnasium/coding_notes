@@ -11,7 +11,7 @@ Create a project
 
 ## Generate a Module
 
-to generate a module we use 
+to generate a module we use
 `$ nest g module <module name>`
 
 'g' stands for 'generate'
@@ -23,5 +23,11 @@ if we just typed 'nest g' we would get an error telling us we are missing the sc
 
 `nest g --help`
 
+## Generate a Controller
 
+to generate a controller type in the CLI:
+`$ nest g controller <controller name>`
 
+to generate it without a spec use the following flag:
+'--no-spec'
+`$ nest g controller <controller name> --no-spec`
