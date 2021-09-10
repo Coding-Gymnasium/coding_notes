@@ -259,30 +259,3 @@ public async down(queryRunner: QueryRunner): Promise<any> {
 
 `nest g s coffee-rating`
 
-## Set up Docker and Postgres
-
-`$ docker run --name postgres-nest -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres`
-
-#### notes about the above command:
-
-- 'docker' to invoke docker
-- 'run' to run a container
-- '--name postgres-nest'. How I want to name my container. In this case 'postgres-nest'
-- '-p 5432:5432' maps postgres port '5432' to our machine local port '5432'. Because I had another project using 5432, I had to use '6000:5432' instead.
-- '-e POSTGRES_PASSWORD=postgres'. Sets environment variable password to postgres
-- '-d' means it will run in detached mode. If the terminal is closed it will still continue running
-- 'postgres' The actual container name that is store in docker hub.
-
-### Start and stop the container
-
-#### Start
-
-`$ docker container start postgres-nest`
-
-#### Stop
-
-`$ docker container stop postgres-nest`
-
-#### To delete it (Do only if you need to remove it)
-
-`$ docker container rm postgres-nest`
