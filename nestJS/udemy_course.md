@@ -78,4 +78,4 @@ to generate a controller type in the CLI:
 
 ## Install typeorm and PG driver
 
-`$ yarn add typeorm @nestjs/typeorm p`
+```$ yarn add typeorm @nestjs/typeorm pg`
