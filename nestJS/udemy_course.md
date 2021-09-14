@@ -76,8 +76,22 @@ to generate a controller type in the CLI:
 
 `$ docker container rm postgres-nest`
 
-## Install typeorm and PG driver
+## Install Typeorm and PG driver
 
-```$ yarn add typeorm @nestjs/typeorm pg`
+`$ yarn add typeorm @nestjs/typeorm pg`
 
 [typeorm.io](https://typeorm.io/#/)
+
+## Auth
+
+Generate a module
+
+`$ nest g module auth`
+
+generate a service without spec
+
+`$ nest g service --no-spec`
+
+Generate a controller without spec
+
+`$ nest g controller --no-spec`
