@@ -95,3 +95,7 @@ generate a service without spec
 Generate a controller without spec
 
 `$ nest g controller --no-spec`
+
+## Install Bcrypt
+
+`$ yarn add bcrypt`
