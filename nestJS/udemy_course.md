@@ -99,3 +99,8 @@ Generate a controller without spec
 ## Install Bcrypt
 
 `$ yarn add bcrypt`
+
+## Add JWT Packages
+
+`$ yarn add @nestjs/jwt @nestjs/passport passport passport-jwt`
+`$ yarn add @types/passport-jwt'
