@@ -151,3 +151,24 @@ The 'any' type is a regular type just like 'string' or 'boolean' are. It means T
 **AVOID VARIABLES WITH 'ANY' AT ALL COST**
 
 ![JSON.parse() and TS](./assets/any.png)
+
+## Type For Functions
+
+### Type Annotations for Functions
+
+Code we add to tell TS what type of arguments a function will receive and what type of values it will return.
+
+### Type Inference for Functions
+
+TS tries to figure out what type of value a function will return but not what type of value the arguments are.
+
+Typescript makes sure we are returning the correct type of value but it doesn't check the logic in the function.
+
+```ts
+const add = (a: number, b: number): number => {
+  return a - b; // TS won't catch the logic and notice that we have a '-' instead of a '+'
+};
+```
+
+Always annotate the arguments type in a function. **No type inference for arguments**
+TS inference will sort out the return type, however, it's not advisable to use it. Annotate the type for the return too.
