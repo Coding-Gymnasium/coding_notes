@@ -172,3 +172,38 @@ const add = (a: number, b: number): number => {
 
 Always annotate the arguments type in a function. **No type inference for arguments**
 TS inference will sort out the return type, however, it's not advisable to use it. Annotate the type for the return too.
+
+## Type for Arrays
+
+Arrays where each element is some consistent type of value.
+
+- TS cand type inference when extracting values from an array
+- TS can prevent us from adding incompatible values to the array
+- We can get help with 'map', 'forEach', 'reduce' functions
+- Flexible - arrays can still contain multiple different types.
+
+### Where To Use Typed Arrays?
+
+Any time we need to represent a collection of records with some arbitrary sort order.
+
+## Type for Tuples
+
+Tuple: Array-like structure where each element represents some property of a record.
+
+![Tuple Concept](./assets/tuple.png)
+
+Tuples are useful when working with CSV files for example.
+In general other form of collections are preferred over Tuples. Out of context a tuple can be very criptic and hard for the developer to tell what each element is
+
+Example:
+
+```ts
+// tuple example. It's hard to know what each element is when seen out of context.
+const carSpecs: [number, number] = [400, 3354];
+
+// easy to see what it's going on at a glance. Better option to model a record this way.
+const carStats = {
+  horsePower: 400,
+  weight: 3354,
+};
+```
