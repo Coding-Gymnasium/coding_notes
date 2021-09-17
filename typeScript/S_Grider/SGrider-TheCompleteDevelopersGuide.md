@@ -102,6 +102,52 @@ Types are shortcuts and labels for describing the different properties and metho
 - classes
 - objects
 
-![types examples](./assets/types-kinds.png)
+![types kinds](./assets/types-kinds.png)
 
 With object types we can write some code to 'trick' TypeScript to think the value it is a certain type. We can only do this with object types but not with primitive types.
+
+## Type Annotations and type Inference
+
+### Type Annotations
+
+Code we add to tell Typescript what type of value a variable will refer to
+The developer tell TypeScript the type
+
+### Type Inference
+
+Typescript tries to figure out what type of value a variable refers to
+TypeScript guesses the type
+If we do the initialization in the same line TS can figure out the type for us
+However, if the initialization happens in another line we would get type 'any'
+
+```ts
+let apples; // type any
+apples = 5;
+```
+
+![types inference](./assets/types-inference.png)
+
+#### When To Use Each
+
+#### Type Annotation
+
+- When we declare a variable on one line then initialize it later
+- When we want a variable to have a type that can't be inferred
+- When a function returns the 'any' type and we need to clarify the value
+
+##### Type Inference
+
+- Always
+
+![When To Use](./assets/when.png)
+
+## The Any Type
+
+When TS doesn't know what type to expect assigns the 'any' type.
+
+The 'any' type is a regular type just like 'string' or 'boolean' are. It means TS has no idea what this is - can't check for correct property references.
+
+<!-- prettier-ignore -->
+**AVOID VARIABLES WITH 'ANY' AT ALL COST**
+
+![JSON.parse() and TS](./assets/any.png)
