@@ -256,3 +256,34 @@ const printVehicle = (vehicle: Vehicle): void => {
 
 printVehicle(oldCivic);
 ```
+
+### Reusability
+
+If we create another object that has different properties but also has a 'summary' property we can use our interface as type for it. In this example both 'drink' and 'vehicle' are considered of type 'Reportable'.
+
+```javascript
+const drink = {
+  color: 'brown',
+  carbonated: true,
+  sugar: 40,
+  summary(): string {
+    return `My drink has ${this.sugar} grams of sugar`;
+  },
+};
+
+const printSummary = (item: Reportable): void => {
+  console.log(item.summary());
+};
+
+printSummary(oldCivic);
+printSummary(drink);
+```
+
+![Reportable Interface](./assets/reportable.png)
+
+#### General Strategy for Reusable Code in TS
+
+- Create functions that accept arguments that are typed with interfaces
+- Objects/classes can decide to 'implement' a given interface to work with a function.
+
+![Interfaces Strategy](./assets/strategy.png)
