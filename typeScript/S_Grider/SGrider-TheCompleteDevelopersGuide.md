@@ -207,3 +207,10 @@ const carStats = {
   weight: 3354,
 };
 ```
+
+<hr/>
+
+## Interfaces
+
+Creates a new type, describing the property names and value types of an object.
+When we create an interface, we are creating a new type inside our application just the same way we have types like string or boolean or number. We are creating a new type that is a custom type that we define.
