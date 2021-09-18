@@ -120,7 +120,7 @@ TypeScript guesses the type
 If we do the initialization in the same line TS can figure out the type for us
 However, if the initialization happens in another line we would get type 'any'
 
-```ts
+```javascript
 let apples; // type any
 apples = 5;
 ```
@@ -164,7 +164,7 @@ TS tries to figure out what type of value a function will return but not what ty
 
 Typescript makes sure we are returning the correct type of value but it doesn't check the logic in the function.
 
-```ts
+```javascript
 const add = (a: number, b: number): number => {
   return a - b; // TS won't catch the logic and notice that we have a '-' instead of a '+'
 };
@@ -197,7 +197,7 @@ In general other form of collections are preferred over Tuples. Out of context a
 
 Example:
 
-```ts
+```javascript
 // tuple example. It's hard to know what each element is when seen out of context.
 const carSpecs: [number, number] = [400, 3354];
 
@@ -214,3 +214,45 @@ const carStats = {
 
 Creates a new type, describing the property names and value types of an object.
 When we create an interface, we are creating a new type inside our application just the same way we have types like string or boolean or number. We are creating a new type that is a custom type that we define.
+
+Interfaces' names start with a capital letter and must be generic to describe the properties it has. i.e. Vehicle.
+When we create an interface we create a custom type we can reuse. In the exampel Vehicle is a variable of sort that refers to a type.
+
+```javascript
+interface Vehicle {
+  name: string;
+  year: number;
+  broken: boolean;
+}
+
+const printVehicle = (vehicle: Vehicle) {
+  console.log(vehicle.name);
+}
+```
+
+Typescript uses this type to check the object we pass it on. If one of the properties is missing or mispelled, TS will throw an error pointing it out.
+Inside an interface we are not limited to just primitive value, we can for example assign a property and instance of Date or a function.
+
+```javascript
+interface Vehicle {
+  name: string;
+  year: Date;
+  broken: boolean;
+  summary(): string;
+}
+
+const oldCivic = {
+  name: 'civic',
+  year: new Date(),
+  broken: true,
+  summary(): string {
+    return `Name: ${this.name}`;
+  },
+};
+
+const printVehicle = (vehicle: Vehicle): void => {
+  console.log(vehicle.summary());
+};
+
+printVehicle(oldCivic);
+```
