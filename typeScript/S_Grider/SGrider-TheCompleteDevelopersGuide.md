@@ -287,3 +287,40 @@ printSummary(drink);
 - Objects/classes can decide to 'implement' a given interface to work with a function.
 
 ![Interfaces Strategy](./assets/strategy.png)
+
+## Classes
+
+Blueprint to create an object - a model - with some fields (values) and methods (functions) to represent a 'thing'
+
+### Inheritance
+
+A class can extend another. In that case that class inherites all the methods from the class it's extending.
+
+```javascript
+class Vehicle {
+  drive(): void {
+    console.log('chugga chugga');
+  }
+
+  honk(): void {
+    console.log('beep');
+  }
+}
+
+class Car extends Vehicle {}
+const car = new Car();
+car.honk();
+car.drive();
+```
+
+#### A Child Class Can Override Its Parent's Methods
+
+The child class can override the parent methods by redifining it. For example, the class car can override the method 'dive()' to have a different sound as ilustrated below.
+
+```javascript
+class Car extends Vehicle {
+  honk(): void {
+    console.log('vroom');
+  }
+}
+```
