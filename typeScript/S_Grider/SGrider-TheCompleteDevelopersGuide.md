@@ -324,3 +324,35 @@ class Car extends Vehicle {
   }
 }
 ```
+
+### Instance Method Modifiers
+
+Modifiers are keywords that we can place in different methods and properties inside of a class.
+The goal of these different modifiers is to restrict access to different functions or different variables.
+
+#### The different options are:
+
+- **Public**: This method can be called any where, any time. Default method.
+- **Private**: This method can only be called by other methods in **this** class.
+- **Protected**: This method can be called by other methods in this class, or by other methods in child classes. It cannot be accessed outside the class, with the exception of children classes.
+
+```javascript
+class Vehicle {
+  protected honk(): void {
+    console.log('beep');
+  }
+}
+
+class Car extends Vehicle {
+  private drive(): void {
+    console.log('vroom');
+  }
+
+  startDrivingProcess(): void {
+    this.drive(); // private method can be access within the class.
+    this.honk(); // child class can access protected method.
+  }
+}
+
+const car = new Car();
+```
