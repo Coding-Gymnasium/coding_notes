@@ -417,3 +417,52 @@ Run parcel
 ## Install Google Map Type Definition Files
 
 `$ npm install @types/google.maps`
+
+## Interface
+
+The interface is a set of instructions to classes on how to be an argument to a method.
+Typescript would check that the class satisfies these requirements and give us an error if they are not.
+
+For example:
+
+```javascript
+// CustomMap.ts
+export interface Mappable {
+  location: {
+    lat: number,
+    lng: number,
+  };
+  markerContent(): string;
+  color: string;
+}
+
+// User.ts
+
+// imports the interface Mappable and provides the require
+// arguments. In this case location, markerContent() and color.
+
+import faker from 'faker';
+import { Mappable } from './CustomMap';
+
+export class User implements Mappable {
+  name: string;
+  location: {
+    lat: number,
+    lng: number,
+  };
+
+  color: string = 'red';
+
+  constructor() {
+    this.name = faker.name.firstName();
+    this.location = {
+      lat: parseFloat(faker.address.latitude()),
+      lng: parseFloat(faker.address.longitude()),
+    };
+  }
+
+  markerContent(): string {
+    return `User name: ${this.name}`;
+  }
+}
+```
