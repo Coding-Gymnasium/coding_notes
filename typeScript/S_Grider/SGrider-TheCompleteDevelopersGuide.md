@@ -356,3 +356,64 @@ class Car extends Vehicle {
 
 const car = new Car();
 ```
+
+## Setting up a project with parcel-bundler
+
+`$ npm install -g parcel-bundler`
+
+In the directory we want the project in create a folder called 'maps'
+`$ mkdir maps && cd maps`
+
+Touch a new file called 'index.html'
+
+`$ touch index.html`
+
+Add the following code to it. We will be referencing our ts file here.
+
+```html
+<html>
+  <body>
+    <script src="./src/index.ts"></script>
+  </body>
+</html>
+```
+
+Alternative for such a small amount of code I can create the file as follows
+
+`$ cat > index.html
+
+<html>
+  <body>
+    <script src="./src/index.ts"></script>
+  </body>
+</html>
+`
+Then use 'Ctrl + D' to tell the system we are done entering text.
+
+Create a new folder called 'src'
+
+`$ mkdir src`
+
+Create a new file in it called 'index.ts'
+
+`$ touch index.ts`
+
+Run parcel
+
+`$ parcel index.html`
+
+![Src Folder](./assets/src.png)
+
+## Install Faker
+
+`$ npm install faker`
+
+[Faker](https://www.npmjs.com/package/faker)
+
+### Install Type Definition Files
+
+`$ npm install @types/faker`
+
+## Install Google Map Type Definition Files
+
+`$ npm install @types/google.maps`
