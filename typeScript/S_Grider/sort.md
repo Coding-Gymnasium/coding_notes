@@ -101,4 +101,25 @@ For example, given [0, 5, -1, 10] the algorithm will compare 0 to 5. 0 is lower 
 Next 5 is compared to -1. -1 is lower than 5 so it moves to its left. Then 5 is compared to 10, and we have no changes.Now we have [0, -1, 5, 10]. At this point we are guaranteed that the last number to the right it's the greates of the collection.
 The process starts over, excluding the last element. This process continuos until all elements are excluded and the final result is that the elements are sorted in ascending order left to right.
 
+## Type Guards
 
+#### typeof
+
+When we use a type guard for primitive types, we use the 'typeof' operator. Narrow type of a value to a primitive type.
+(number, string, boolean, symbol)
+
+```javascript
+if (typeof this.collection === 'string') {
+  // logic goes here
+}
+```
+
+#### instanceof
+
+Use instanceof on every other value that is created with a constructor function. Narrow down every other type of value.
+
+```javascript
+if (this.collection instanceof Array) {
+  // logic goes here
+}
+```
