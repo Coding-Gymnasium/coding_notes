@@ -84,3 +84,23 @@ lotteryPromise
   .then((res) => console.log(res))
   .catch((err) => console.error(err));
 ```
+
+## Promisifying
+
+Usually we build promises to wrap callback asynchronous behavior based functions. This process is called promisifying. Promisifying is the convertion of these type of functions to promise based functions.
+
+```javascript
+const wait = (seconds) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(2)
+  .then(() => {
+    console.log('I waited for 2 seconds');
+    return wait(1);
+  })
+  .then(() => console.log('I waited for 1 second'));
+```
+
