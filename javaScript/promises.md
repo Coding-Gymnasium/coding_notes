@@ -104,3 +104,28 @@ wait(2)
   .then(() => console.log('I waited for 1 second'));
 ```
 
+### Using Geolocation API
+
+```javascript
+navigator.geolocation.getCurrentPosition(
+  (position) => console.log(position),
+  (err) => console.log(err)
+);
+```
+
+Promisifying the above function:
+
+```javascript
+const getPosition = () => {
+  return new Promise((resolve, reject) => {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject); // this line does the same as the commented lines above.
+  });
+};
+
+getPosition().then((pos) => console.log(pos)); // GeolocationPosition {coords: GeolocationCoordinates, timestamp: 1632752163306}
+getPosition().then((pos) => console.log(pos.coords)); // GeolocationCoordinates {latitude: 39.757683, longitude: -104.8908404, altitude: null, accuracy: 20.579, altitudeAccuracy: null, …}
+```
