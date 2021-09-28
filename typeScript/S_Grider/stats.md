@@ -89,4 +89,26 @@ if we console.log matches we should see something like this:
 - Primary goal is to signal to other engineers that these are all closely related values.
 - Use whenever we have a small fixed set of values that are all closely related and known at compile time.
 
+## Parsing a Date String to a Date Object
 
+`new Date()`
+
+it can take multiple arguments
+
+new Date(<year>, <month as index>, <date>)
+
+`new Date(2021, 0, 28)`
+returns => Thu Jan 28 2021 00:00:00 GMT-0700 (Mountain Standard Time) {}
+
+In the project we create a new file called 'utils.ts' and a parsing method, 'dateStringToDate'
+The reason we do this in a separate file is to abstract it from index.ts since it has nothing to do with its main function.
+
+```javascript
+export const dateStringToDate = (dateString: string): Date => {
+  const dateParts = dateString.split('/').map((value: string): number => {
+    return parseInt(value);
+  });
+
+  return new Date(dateParts[2], dateParts[1], dateParts[0]);
+};
+```
