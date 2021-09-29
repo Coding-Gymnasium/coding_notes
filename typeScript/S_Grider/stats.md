@@ -113,4 +113,31 @@ export const dateStringToDate = (dateString: string): Date => {
 };
 ```
 
+## Generics
 
+- Like function arguments, but for types in class/function definitions.
+- Allows us to define the type of a property/argument/return value at a future point.
+- Used heavily when writing reusable code.
+
+Generics example:
+
+```javascript
+class HoldAnyThing<TypeOfData> {
+data: TypeOfData
+}
+
+const holdNumber = new HoldAnyThing<number>();
+holdNumber.data = 123;
+
+const holdString = new HoldAnyThing<string>();
+holdString.data = 'asdlkj';
+```
+
+By convention we would call 'TypeOfData' just 'T'
+for example:
+
+```javascript
+class HoldAnyThing<T> {
+  data: T;
+}
+```
