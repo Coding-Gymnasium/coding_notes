@@ -14,12 +14,12 @@
 
 ### Unit vs Functional Testing
 
-| Unit Testing                                 | Functional Testing                        |
-| -------------------------------------------- | ----------------------------------------- |
-| Isolated: mock dependencies, test internals  | Include all relevant units, test behavior |
-| Very easy to pinpoint failures               | Close to how users interact with software |
-| Further from how users interact with softwar | Robust tests                              |
-| More likely to break with refactoring        | More difficult to debug failing tests     |
+| Unit Testing                                  | Functional Testing                        |
+| --------------------------------------------- | ----------------------------------------- |
+| Isolated: mock dependencies, test internals   | Include all relevant units, test behavior |
+| Very easy to pinpoint failures                | Close to how users interact with software |
+| Further from how users interact with software | Robust tests                              |
+| More likely to break with refactoring         | More difficult to debug failing tests     |
 
 ### BDD
 
@@ -42,3 +42,60 @@
 - Roles documentation: [Role Definitions](https://www.w3.org/TR/wai-aria/#role_definitions)
   - some elements have built-in roles: button, a, etc.
 - If you can't find your elements like a screen reader would then the app is not accessibility friendly.
+
+### Mock Service Worker
+
+#### Resources
+
+https://mswjs.io/docs/getting-started/mocks/rest-api
+
+#### Installation and Usage
+
+`npm install msw` or `yarn add msw`
+
+- create handlers
+- create test server
+- Make sure test server listens during all tests
+  - reset after each test
+
+##### Create Handlers
+
+In the 'src' directory create a new folder named 'mocks'
+Touch `src/mocks/handlers.js`
+
+###### Dissecting The Handler
+
+example:
+
+`rest.get('http://localhost:3000/scoops', (req, res, ctx) => {})`
+
+Handler Type: rest or graphql
+
+HTTP method to mock: get, post, etc
+
+Full URL to mock. Here we enter what we type in the browser
+
+Response resolver function:
+
+- req: request object
+- res: function to create response
+- ctx: utility to build response
+
+docs: https://mswjs.io/docs/basics/response-resolver
+
+<!-- // src/mocks/handlers -->
+
+```javascript
+import { rest } from 'msw';
+
+export const handlers = [
+  rest.get('http://localhost:3000/scoops', (req, res, ctx) => {
+    return res(
+      ctx.json([
+        { name: 'Chocolate', imagePath: 'images/chocolate.png' },
+        { name: 'vanilla', imagePath: '/images/vanilla.png' },
+      ])
+    );
+  }),
+];
+```
